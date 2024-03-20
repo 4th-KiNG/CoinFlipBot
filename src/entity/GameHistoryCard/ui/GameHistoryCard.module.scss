@@ -1,0 +1,67 @@
+.card {
+  background: #263c5c;
+  padding: 8px 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 70px;
+  width: 100%;
+  position: relative;
+  &:first-child {
+    border-radius: 6px 6px 0 0;
+  }
+  &:last-child {
+    border-radius: 0 0 6px 6px;
+  }
+  @media screen and (max-width: 700px) {
+    min-height: 58px;
+  }
+  @media screen and (max-width: 500px) {
+    min-height: 65px;
+  }
+}
+
+.text {
+  font-size: 18px;
+  line-height: 20px;
+  @media screen and (max-width: 700px) {
+    font-size: 16px;
+  }
+  @media screen and (max-width: 700px) {
+    font-size: 12px;
+  }
+}
+
+.textResult {
+  color: #cc2e1e;
+
+  &._win {
+    color: #6feb47;
+  }
+}
+
+.time {
+  font-size: 12px;
+  position: absolute;
+  right: 8px;
+  bottom: 2px;
+  @media screen and (max-width: 700px) {
+    font-size: 10px;
+  }
+  @media screen and (max-width: 700px) {
+    font-size: 8px;
+  }
+}
+
+
+.redirect {
+  position: absolute;
+  right: 8px;
+  top: 4px;
+  cursor: pointer;
+  & img {
+    width: 20px;
+    height: 20px;
+  }
+}

@@ -1,0 +1,14 @@
+.colorPick {
+
+  &._circle {
+  }
+
+  &._isChoosen {
+    filter: brightness(0.7);
+  }
+
+  & img {
+    width: 60px !important;
+    height: inherit !important;
+  }
+}

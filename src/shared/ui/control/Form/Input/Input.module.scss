@@ -1,0 +1,79 @@
+.input {
+  opacity: 0;
+  outline: none;
+  position: relative;
+  height: 55px;
+  width: 94px;
+  padding: 0;
+  border: 0;
+  @media screen and (max-width: 700px) {
+    height: 35px;
+    width: 43px;
+  }
+  &::placeholder {
+    font-weight: 400;
+  }
+}
+
+.wrapper {
+  position: relative;
+  width: max-content;
+  height: 100%;
+  background: none;
+}
+
+.errorText {
+  opacity: 0;
+  font-weight: 400;
+  font-size: 12px;
+
+  &._error {
+    opacity: 1;
+  }
+}
+
+.bgNumbers {
+  position: absolute;
+  top: 0;
+  height: 55px;
+  width: 94px;
+  left: 0;
+  @media screen and (max-width: 700px) {
+    height: 35px;
+    width: initial;
+  }
+}
+
+.numbers {
+  position: absolute;
+  height: 55px;
+  width: 94px;
+  display: flex;
+  gap: 3px;
+  padding: 18px 10px;
+  top: 0;
+  left: 0;
+  cursor: text;
+
+  @media screen and (max-width: 700px) {
+    height: 25px;
+    width: 61px;
+    gap: 2px;
+    padding: 9px 5px;
+    top: 3px;
+  }
+
+  & img {
+    height: 15px;
+    @media screen and (max-width: 700px) {
+      height: 10px;
+    }
+  }
+}
+
+.imgResultContainer {
+  display: flex;
+  justify-content: center;
+  height: max-content;
+  width: max-content;
+}

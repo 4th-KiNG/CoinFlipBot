@@ -1,0 +1,8 @@
+.button img {
+  width: 425px;
+  height: 80px !important;
+  @media screen and (max-width: 700px) {
+    width: 320px;
+    height: 60px !important;
+  }
+}

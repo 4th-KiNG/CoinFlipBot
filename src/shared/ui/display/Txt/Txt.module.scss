@@ -1,0 +1,22 @@
+.txt {
+  font-size: 16px;
+
+  &._sm {
+    font-size: 12px;
+  }
+
+  &._md {
+    font-size: 20px;
+    @media screen and (max-width: 700px) {
+      font-size: 7px;
+    }
+  }
+
+  &.lg {
+    font-size: 28px;
+  }
+
+  @media screen and (max-width: 700px) {
+    font-size: 12px;
+  }
+}
