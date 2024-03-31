@@ -1,1 +1,1 @@
-if('serviceWorker' in navigator) {window.addEventListener('load', () => {navigator.serviceWorker.register('/CoinFlipBot/sw.js', { scope: '/CoinFlipBot/' })})}
+if('serviceWorker' in navigator) {window.addEventListener('load', () => {navigator.serviceWorker.register('https://4th-king.github.io/CoinFlipBot/sw.js', { scope: 'https://4th-king.github.io/CoinFlipBot/' })})}
