@@ -19,7 +19,7 @@ export const ChosePaymentEntity: FC<ChosePaymentEntityProps> = observer(({ onCli
     <Button
       backgroundImage={isVariant ? VariantBackground : ChoseBackground}
       as={'button'}
-      size={'sm'}
+      size={'ton'}
       className={classes.content}
       type={'reset'}
       onClick={onClick}

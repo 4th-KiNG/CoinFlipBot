@@ -1,6 +1,7 @@
 import { observer } from "mobx-react-lite"
 import { FC } from "react"
-
+import sound1 from '/assets/sounds/sound1.mp3'
+import useSound from "use-sound"
 import {
   DoubleOrNothingGameStatusButton,
 } from "../../../../../entity/GameStatusButton/ui/DobuleOrNothing/DoubleOrNothingGameStatusButton.tsx"
@@ -20,7 +21,7 @@ interface ChoseColorWidgetProps {
 
 export const ChoseColorWidget: FC<ChoseColorWidgetProps> = observer(({ deposit }) => {
   const { gameStatusStore } = useStores()
-
+  const [play] = useSound(sound1)
   return (
     <div className={statusClasses.statusContainer}>
       <div className={statusClasses.robotAndColor}>
@@ -44,13 +45,12 @@ export const ChoseColorWidget: FC<ChoseColorWidgetProps> = observer(({ deposit }
       </div>
       <DoubleOrNothingGameStatusButton
         color={gameStatusStore.color}
-        bet = {gameStatusStore.bet}
+        bet = {gameStatusStore.bet.slice(0, -9)}
         onClick={() => {
           if (!gameStatusStore.color) return
-
-          console.log(gameStatusStore.bet)
-
           void deposit?.(gameStatusStore.bet ?? '0')
+          play()
+          window.Telegram.WebApp.HapticFeedback.impactOccurred('light');
         }}
       />
     </div>

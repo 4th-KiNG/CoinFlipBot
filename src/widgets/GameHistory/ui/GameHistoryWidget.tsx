@@ -25,14 +25,14 @@ export const GameHistoryWidget = observer(() => {
         className={classes.infiniteScroll}
         loader={<ButtonSpinner />}
       >
-        {gameHistoryStore.games?.map((item, index) => {
+        {gameHistoryStore.games?.map((item, index: number) => {
           console.log((gameHistoryStore.games?.length ?? 0) - 1)
 
           return (
-            <React.Fragment key={index}>
+            (index + 1) * 2 <= gameHistoryStore.games?.length ? <React.Fragment key={index}>
               <GameHistoryCard game={item} />
               {(index !== (gameHistoryStore.games?.length ?? 0) - 1) && <div className={classes.divine} />}
-            </React.Fragment>
+            </React.Fragment> : ""
           )
         })}
       </InfiniteScroll>

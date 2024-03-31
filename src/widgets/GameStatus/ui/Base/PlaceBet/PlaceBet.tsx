@@ -1,7 +1,8 @@
 import { observer } from "mobx-react-lite"
 import { useCallback, useEffect, useState } from "react"
 import { useForm } from "react-hook-form"
-
+import sound1 from '/assets/sounds/sound1.mp3'
+import useSound from "use-sound"
 import InputIcon from '/assets/Number box.png'
 
 import { EnterAmount } from "../../../../../entity/EnterAmount/EnterAmount.tsx"
@@ -23,7 +24,7 @@ export const PlaceBet = observer(() => {
   const { gameStatusStore, tokenCurrencyStore } = useStores()
 
   const [betValue, setBetValue] = useState<string>('')
-
+  const [play] = useSound(sound1)
   const { control,
     handleSubmit,
     formState: { isValid },
@@ -95,7 +96,13 @@ export const PlaceBet = observer(() => {
 
       </div>
 
-      <DoubleOrNothingGameStatusButton isSubmit isDisabled={!isValid || Number.isNaN(betWatch)} />
+      <DoubleOrNothingGameStatusButton 
+      isSubmit
+      isDisabled={!isValid || Number.isNaN(betWatch)}
+      onClick={() => {
+        play()
+        window.Telegram.WebApp.HapticFeedback.impactOccurred('light');
+      }} />
     </form>
   )
 })

@@ -11,7 +11,7 @@ export async function sleep(time: number) {
 
 async function waitCreditTx(address: Address, lastTx: Transaction, bet: bigint) {
   const client = await getClient()
-  let maxTries = 12
+  let maxTries = 15
   while (maxTries > 0) {
     maxTries--
     const transactions = await client.getTransactions(address, { limit: 10 })
@@ -34,15 +34,14 @@ async function waitCreditTx(address: Address, lastTx: Transaction, bet: bigint) 
 
 export async function waitTx(address: Address, bet: bigint) {
   const client = await getClient()
-  let maxTries = 25
+  let maxTries = 15
   let lastTx: Transaction | undefined
   while (maxTries > 0) {
     maxTries--
     const transactions = await client.getTransactions(address, { limit: 10 })
-    console.log(transactions[0])
     if (lastTx && lastTx.lt !== transactions[0].lt){
       await sleep(5000)
-
+      lastTx.lt
       return await waitCreditTx(address, transactions[0], bet)
     }
     await sleep(3000)

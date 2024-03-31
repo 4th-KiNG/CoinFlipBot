@@ -1,10 +1,9 @@
 import clsx from "clsx"
 import * as React from "react"
 import { forwardRef, useState } from "react"
-import { Link } from "react-router-dom"
+
 import classes from "./Button.module.scss"
 import { ButtonSpinner } from './ButtonSpinner'
-
 
 export type ButtonVariant = "primary" | 'secondary'
 interface BaseButtonProps {
@@ -14,7 +13,7 @@ interface BaseButtonProps {
   text?: string
   isDisabled?: boolean;
   isLoading?: boolean;
-  size?: 'xsm' | 'sm' | 'md' | 'lg';
+  size?: 'xsm' | 'sm' | 'md' | 'lg' | 'ton';
   backgroundImage?: string
   hoverBackgroundImage?: string
 }
@@ -47,11 +46,11 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) =>
   const {
     className,
     children,
+    text,
     variant = "primary",
     isDisabled,
     isLoading,
     size,
-    text,
     backgroundImage,
     hoverBackgroundImage,
     ...other
@@ -66,10 +65,10 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) =>
     [classes._sm]: size === "sm",
     [classes._md]: size === "md",
     [classes._lg]: size === "lg",
+    [classes._ton]: size === "ton",
   })
 
   if (other.as === "button") {
-    const play = new Audio('../../../../../public/assets/sounds/sound1.mp3')
     return (
       <button
         ref={ref}
@@ -84,10 +83,9 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) =>
           console.log('LEAVE')
           setIsHover(false)
         }}
-        onClick={() => (window.navigator.vibrate(100), play.play())}
       >
         <p className={classes.button_text}>{text}</p>
-        <img className={classes.button_image}
+        <img
           src={(isHover && hoverBackgroundImage) ? hoverBackgroundImage : backgroundImage}
         />
         {children}
@@ -105,16 +103,6 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) =>
     )
   }
 
-  if (other.as === "link") {
-    return (
-      <Link className={buttonClasses} {...other}>
-        {children}
-        {isLoading && (
-          <ButtonSpinner isLoading={isLoading} />
-        )}
-      </Link>
-    )
-  }
 
   throw new Error("Button as prop must be one of: button, a, link")
 })

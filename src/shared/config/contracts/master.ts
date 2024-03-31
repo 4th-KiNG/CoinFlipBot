@@ -1,3 +1,3 @@
-export const contractAddress = 'EQCWGb52xuVTDxAW1578AexV3A8gJZGkdYDuDMNirbi26Mzo'
+export const contractAddress = 'EQC8-9Ylsf5rQftBZrLhGDbodCqmCR4VVYgC4FKfjFUfRvGa'
 
-export const contractRowAddress = '0:9619be76c6e5530f1016d79efc01ec55dc0f202591a47580ee0cc362adb8b6e8'
+export const contractRowAddress = '0:bcfbd625b1fe6b41fb4166b2e11836e8742aa6091e15558802e0529f8c551f46'

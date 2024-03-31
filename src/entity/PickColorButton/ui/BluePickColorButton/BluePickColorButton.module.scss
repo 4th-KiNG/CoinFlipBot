@@ -1,6 +1,7 @@
 .colorPick {
 
   &._circle {
+    margin-bottom: 32px;
   }
 
   &._isChoosen {
@@ -9,6 +10,6 @@
 
   & img {
     width: 60px !important;
-    height: inherit !important;
+    height: 50px !important;
   }
 }

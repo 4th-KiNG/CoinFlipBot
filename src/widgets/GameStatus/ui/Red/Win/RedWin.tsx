@@ -8,14 +8,15 @@ import {
 import { RedWinRobot } from "../../../../../entity/GameStatusRobot/ui/RedWin/RedWinRobot.tsx"
 import { useStores } from "../../../../../shared/store/StoreProvider.tsx"
 import robotClasses from '../../GameStatus.module.scss'
-
+import sound1 from '/assets/sounds/sound1.mp3'
+import useSound from "use-sound"
 interface RedWinProps {
   onTry?: () => void
 }
 
 export const RedWin: FC<RedWinProps> = observer(({ onTry }) => {
   const { gameStatusStore } = useStores()
-  
+  const [play] = useSound(sound1)
   return (
     <div className={robotClasses.resultContainer}>
       <RedWinRobot />
@@ -23,6 +24,8 @@ export const RedWin: FC<RedWinProps> = observer(({ onTry }) => {
       <TryAgainGameStatusButton onClick={() => {
         gameStatusStore.restore()
         onTry?.()
+        play()
+        window.Telegram.WebApp.HapticFeedback.impactOccurred('light');
       }}
       />
     </div>

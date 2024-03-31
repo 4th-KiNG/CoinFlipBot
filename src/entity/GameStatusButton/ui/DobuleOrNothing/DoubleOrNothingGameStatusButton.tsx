@@ -1,15 +1,16 @@
+
 import { observer } from "mobx-react-lite"
 import { FC, useMemo } from "react"
 
 import BlueDouble from '/assets/Blue1.png'
-import Double from "/assets/Double or nothing.png"
+import Double from '/assets/Blue2.png'
 import RedDouble from '/assets/Red1.png'
-
 import { Button } from "../../../../shared/ui/control/Button"
 import classes from './DoubleOrNothingGameStatusButton.module.scss'
 
 interface DoubleOrNothingGameStatusButtonProps {
-  bet: string
+  payment?: string
+  bet?: string
   isDisabled?: boolean
   onClick?: () => void
   isSubmit?: boolean
@@ -25,7 +26,7 @@ export const DoubleOrNothingGameStatusButton:FC<DoubleOrNothingGameStatusButtonP
 }) => {
 
   const backgroundImg = useMemo(() => {
-    if (!color) return BlueDouble
+    if (!color) return Double
     if (color === 'red') return RedDouble
     if (color === 'blue') return BlueDouble
   }, [color])

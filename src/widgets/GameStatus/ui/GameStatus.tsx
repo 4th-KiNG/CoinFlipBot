@@ -1,7 +1,8 @@
 import { useTonAddress } from "@tonconnect/ui-react"
 import { observer } from "mobx-react-lite"
 import { FC, ReactNode, useEffect } from "react"
-
+import useSound from "use-sound"
+import sound1 from '/assets/sounds/sound2.mp3'
 import { useStores } from "../../../shared/store/StoreProvider.tsx"
 import { Hide } from "../../../shared/ui/display/Hide/Hide.tsx"
 import { useDeposit } from "../lib/useDeposit.ts"
@@ -36,11 +37,19 @@ export const GameStatus: FC<GameStatusProps> = observer(({ isNoInterface, elemen
       </NoInterfaceGameStatusWidget>
     </div>
   )}
-
+  const [play, {stop}] = useSound(sound1)
+  useEffect(() => {
+    if (isLoading){
+      play()
+    }
+    else{
+      stop()
+    }
+  }, [isLoading])
   return (
     <div className={classes.container}>
       <Hide hide={!!connectedAddress}>
-      <ChoseColorWidget  deposit={deposit} />
+        <NoConnectGameStatusWidget />
       </Hide>
       <Hide hide={!connectedAddress || !!gameStatusStore.value || isLoading || result !== undefined} >
         <PlaceBet />

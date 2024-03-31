@@ -5,8 +5,7 @@ import { AccountEvents } from "tonapi-sdk-js"
 import { Game } from "../../../entity/GameHistoryCard/lib/types.ts"
 import { client } from "../../../shared/config/tonApi/config.ts"
 import { ActivateDeactivate } from "../../../shared/lib/store/activate.ts"
-
-const contractAddress = "EQCWGb52xuVTDxAW1578AexV3A8gJZGkdYDuDMNirbi26Mzo"
+import { contractAddress } from "../../../shared/config/contracts/master"
 
 export class GameHistoryStore implements ActivateDeactivate {
   games: Game[] = []
@@ -52,6 +51,7 @@ export class GameHistoryStore implements ActivateDeactivate {
   }
 
   activate (ownerAddress: string) {
+    if (!ownerAddress || ownerAddress === '') return
     void this.request(ownerAddress)
     this.ownerAddress = ownerAddress
   }
