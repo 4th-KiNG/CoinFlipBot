@@ -1,1 +1,1 @@
-if('serviceWorker' in navigator) {window.addEventListener('load', () => {navigator.serviceWorker.register('/CoinFlipBot/sw.js', { scope: '/CoinFlipBot/' })})}
+if('serviceWorker' in navigator) {window.addEventListener('load', () => {navigator.serviceWorker.register('/TonFlip/sw.js', { scope: '/TonFlip/' })})}
